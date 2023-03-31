@@ -1,7 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Sunflower:wght@300;500;700&display=swap");
+
+:root {
+  --color-blue: #2b56e6;
+  --color-light-blue: #42e7df;
+  --color-green: #54f700;
+  --color-purple: #4315ff;
+  --color-gray: #707070;
+  --gap-small: 16px;
+  --gap-large: 40px;
+  --gap-xlarge: 60px;
+}
+
+/* Layout */
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.relative {
+  position: relative;
+}
+
+/* Spacing */
+.gap-s {
+  gap: var(--gap-small);
+}
+
+.gap-l {
+  gap: var(--gap-large);
+}
+
+.gap-xl {
+  gap: var(--gap-xlarge);
+}
+
+.margin-s {
+  margin: var(--gap-small);
+}
+
+.margin-l {
+  margin: var(--gap-large);
+}
+
+.margin-xl {
+  margin: var(--gap-xlarge);
+}
+
+/* Borders */
+.border {
+  border: 1px solid;
+}
+
+/* Box model */
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url(https://res.cloudinary.com/damqsjjsn/image/upload/v1641672204/landscapewLight_wdbhno.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+  margin: 0;
+  font-family: "Sunflower", sans-serif;
+  padding: 0 40px;
+  height: 100vh;
+}
+
+body header .logo {
+  font-size: 40px;
+}
+
+body .btn {
+  border-radius: 23px;
+  letter-spacing: 0.8px;
+  font-size: 14px;
+  font-weight: 300;
+  border: 0;
+  color: white;
+  white-space: nowrap;
+}
+
+body .btn {
+  margin: 0 auto 0;
+  width: 166px;
+  height: 45px;
+  border: none;
+  position: relative;
+  border: 1px solid #dd7d00;
+  background: #66339900;
+}
+
+body .btn::before {
+  transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  content: "";
+  width: 50%;
+  height: 100%;
+  background: black;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+body .btn:hover::before {
+  width: 100%;
+}
+
+body .btn.btn-hover {
+  border-radius: 50px;
+}
+
+body .btn.btn-hover .btn-text {
+  color: white;
+  transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  mix-blend-mode: lighten;
+}
+
+body .btn.btn-hover::before {
+  border-radius: 50px;
+  width: 100%;
+  background: transparent linear-gradient(114deg, #fdc100 0%, #dd7d00 100%) 0% 0% no-repeat padding-box;
+}
+
+body .btn.btn-hover:hover .btn-text {
+  margin-right: 30px;
+}
+
+body .btn.btn-hover:hover::before {
+  background: url("https://res.cloudinary.com/damqsjjsn/image/upload/v1641758792/Icon_ionic-ios-arrow-back_rakyvb.svg") no-repeat, transparent linear-gradient(114deg, #fdc100 0%, #dd7d00 100%) 0% 0% no-repeat padding-box;
+  background-position: center;
+  border-radius: 23px;
+  width: 25%;
+}
+
+
 .App {
   text-align: center;
   display: flex;
-  background: #343541;
   color: white;
   min-height: 100vh;
   display: grid;
@@ -12,22 +168,97 @@
 }
 
 .sidemenu {
-  background: #202123;
+  padding: var(--gap-large) var(--gap-small);
+  background: #050c1405 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 12px #02aba71a;
+  border-radius: 6px;
+  opacity: 1;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   grid-area: sidebar;
 }
 
 .chatbox {
   flex: 1;
   grid-area: main;
+  position: relative;
+  background: #050c1405 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 12px #02aba71a;
+  border-radius: 6px;
+  opacity: 1;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
+
+.chatbox header {
+  padding: var(--gap-large);
+  justify-content: flex-end;
+}
+
+
+.chat-input-holder {
+  padding: 24px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+}
+
+.chat-input-textarea {
+  background: #050c1405 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 12px #02aba71a;
+  border-radius: 6px;
+  opacity: 1;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  resize: none;
+  color: white;
+  outline: none;
+  padding: 12px;
+  box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.1);
+}
+
+.chat-log {
+  padding: 24px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-message {
+  padding: 12px 24px;
+  margin: 0 auto;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.chat-message:hover {
+  background: #050c1405 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 12px #02aba71a;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.avatar {
+  background: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.message {}
 
 /* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-} */
-/* 
-
+}  
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,4 +267,4 @@
   to {
     transform: rotate(360deg);
   }
-} */
+}*/
