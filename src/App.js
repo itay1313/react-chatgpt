@@ -22,19 +22,21 @@ function App() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await setChatLog([...chatLog, { user: "me", message: `${input}` }])
-    await setInput("");
-    const message = chatLog.map((message) => message.message).join("\n");
+    let ChatLogNew = [...chatLog, { user: "me", message: `${input}` }];
+    setInput("");
+
+    const messages = ChatLogNew.map((message) => message.message).join("\n");
+
     const response = await fetch('http://localhost:3080/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ message: message })
+      body: JSON.stringify({ message: messages })
 
     });
     const data = await response.json();
-    await setChatLog([...chatLog, { user: "gpt", message: `${data.message}` }])
+    await setChatLog([...ChatLogNew, { user: "gpt", message: `${data.message}` }])
   }
 
   return (
@@ -76,7 +78,7 @@ const ChatMessage = ({ message }) => {
       <div className={`avatar ${message.user === "gpt" && "chatgpt"}`}>
         <img className="avatar" alt="profile" src=
           {message.user === "gpt" ? 'https://res.cloudinary.com/damqsjjsn/image/upload/v1641745444/Mask_Group_1_ifmexq.png' : 'https://res.cloudinary.com/damqsjjsn/image/upload/v1641672156/samples/people/boy-snow-hoodie.jpg'} /></div>
-      <div className="message">{message.message}</div>
+      <p className="message">{message.message}</p>
     </div>
   )
 }
