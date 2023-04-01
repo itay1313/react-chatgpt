@@ -14,16 +14,17 @@
 
 /* Font sizing */
 html {
-  font-size: 18px;
+  font-size: 5vmin;
 }
 
-@media (max-width: 1024px) {
+/* 
+@media (min-width: 1920px) {
   html {
-    font-size: 22px;
+    font-size: 8vmin;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   html {
     font-size: 18px;
   }
@@ -33,7 +34,7 @@ html {
   html {
     font-size: 16px;
   }
-}
+} */
 
 /* Layout */
 .flex {
@@ -239,6 +240,10 @@ body .btn.btn-hover:hover::before {
   outline: none;
   padding: var(--size-small);
   box-shadow: 0 0 0.5rem 0 rgba(255, 255, 255, 0.1);
+}
+
+.chat-input-textarea::placeholder {
+  color: rgba(225, 224, 224, 0.691);
 }
 
 .chat-log {
