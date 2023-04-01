@@ -84,8 +84,6 @@ body {
   color: white;
   margin: 0;
   font-family: "Sunflower", sans-serif;
-  padding: 0 40px;
-  height: 100vh;
 }
 
 body header .logo {
@@ -198,8 +196,6 @@ body .btn.btn-hover:hover::before {
 
 .chat-input-holder {
   padding: 24px;
-  position: absolute;
-  bottom: 0;
   width: 100%;
 
 }
@@ -226,6 +222,9 @@ body .btn.btn-hover:hover::before {
   text-align: left;
   display: flex;
   flex-direction: column;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  height: 100px;
 }
 
 .chat-message {
@@ -238,7 +237,8 @@ body .btn.btn-hover:hover::before {
   width: 100%;
 }
 
-.chat-message:hover {
+.chat-message:hover,
+.chat-message:last-child {
   background: #050c1405 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 12px #02aba71a;
   backdrop-filter: blur(15px);
